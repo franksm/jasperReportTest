@@ -1,0 +1,37 @@
+<html>
+    <head>
+		<script src="https://code.jquery.com/jquery-1.8.2.js"></script>
+        <script type="text/javascript">
+            function downloadPdf(){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://localhost:8080/jasperReportTest/downloadPdf', true);
+				xhr.responseType = 'arraybuffer';
+
+				xhr.onload = function(e) {
+					if (this.status == 200) {
+						//Do your stuff here
+						var binaryString = this.response;
+						download(binaryString, "test.pdf","application/pdf");
+						alert("下載完成");
+					}
+				};
+				xhr.send();
+            }
+			function download(data, fileName, mimeType){
+				const file = new Blob([data], { type: mimeType });
+				const anchor = document.createElement('a');
+				if (window.navigator.msSaveBlob) { // IE
+					window.navigator.msSaveOrOpenBlob(file, fileName);
+				} else { // Chrome
+					anchor.href = URL.createObjectURL(file);
+					anchor.download = fileName;
+					anchor.click();
+				}
+			}
+        </script>
+    </head>
+
+    <body>
+        <button onclick="downloadPdf()">下載PDF</button>
+    </body>
+</html>
