@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: hyt
+Build-Jdk: 14.0.1
+Implementation-Title: test
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: test
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/test
+Created-By: Maven Integration for Eclipse
+
